@@ -1,0 +1,41 @@
+public class Solution {
+    public int MinimumRounds(int[] tasks) 
+    {
+        Array.Sort(tasks);
+        // Dictionary for 
+        Dictionary<int,int> tasksCounts = new Dictionary<int,int>();
+        foreach(int levelDifficulty in tasks)
+        {
+            if(tasksCounts.ContainsKey(levelDifficulty))
+            {
+                tasksCounts[levelDifficulty]++;
+            }
+            else
+            {
+               tasksCounts[levelDifficulty] = 1;
+            }
+        }
+        
+        // for add round for ever         
+        int minRounds = 0;
+
+        foreach(var t in tasksCounts)
+        {
+            if(t.Value == 1)
+            {
+                return -1;
+            }
+            // t.Value / 3; calculates how many full round we can make with 3 tasks
+            // result of t.Value / 3 add to minRounds -> minimum rounds required to   complete all the tasks (bul:Това увеличава общия брой рундове, необходими за завършване на задачите с текущото ниво на трудност.)
+            minRounds += t.Value / 3;
+
+            // chechk for remainder : gives us the remainder that needs to be covered with an additional round.   
+            if(t.Value % 3 !=0)
+            {
+                minRounds++;
+            }
+        }
+
+        return minRounds;
+    }
+}
