@@ -1,0 +1,19 @@
+public class Solution {
+    public int CountHousePlacements(int n) 
+    {
+        int MOD = 1000000007; // answer may be very large,
+        int[] dp = new int[n+1];
+        dp[0] = 1; // in case when we have zero plots 
+        dp[1] = 2; // in case when we have plots and we have tow opr. put house on plot or not put house on plot (to be or not to be )
+
+        for(int a=2; a<=n;a++)
+        {
+            // рекурентна формула
+            dp[a] = (dp[a-1]+ dp[a-2])%MOD;
+        }
+        // we have two side and in this case we * dp[n] * dp[n];
+        long result = (long)dp[n] * dp[n] %MOD;
+
+        return (int)result;
+    }
+}
