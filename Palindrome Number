@@ -1,0 +1,16 @@
+public class Solution {
+    public bool IsPalindrome(int x) 
+    {
+
+       string input = x.ToString();
+       char[] strToArr = input.ToCharArray();
+       Array.Reverse(strToArr);
+       String s = new String(strToArr);       
+       if(input==s)
+       {
+            return true;
+       }
+
+       return false;
+    }
+}
