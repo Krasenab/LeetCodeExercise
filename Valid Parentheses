@@ -1,0 +1,39 @@
+public class Solution {
+    public bool IsValid(string s) 
+    {
+        Stack<char> braket = new Stack<char>();
+        bool isValidBraket = true;
+        for(int i =0;i<s.Length;i++)
+        {
+            var currentChar = s[i];
+            if(currentChar =='(' || currentChar =='[' || currentChar =='{')
+            {
+                braket.Push(currentChar);
+            }
+            else
+            {
+                if(braket.Count==0)
+                {
+                    isValidBraket = false;
+                    break;
+                }
+                var lastPushedChar = braket.Pop();
+
+                if(currentChar == '}' && lastPushedChar!='{' || currentChar==']' && lastPushedChar !='[' || currentChar==')' && lastPushedChar !='(')
+                {
+                    isValidBraket = false;
+                    break;
+                }
+
+               
+            }
+        }
+        if(braket.Count == 1 || braket.Count !=0)
+        {
+            isValidBraket=false;
+        }
+        
+        return isValidBraket;
+
+    }
+}
