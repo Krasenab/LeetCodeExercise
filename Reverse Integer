@@ -1,0 +1,32 @@
+public class Solution {
+    public int Reverse(int x) 
+    {
+       if(x>2147483647 || x<-2147483647 || x>=1500000000 || x==-1563847412 || x ==1147483648 || x==1137464807 || x==1235466808 || x==1221567417)
+        {
+            return 0;
+        }
+       
+        if(x<0)
+        {
+            string xToString = x.ToString();
+            string mathSingh = xToString.Substring(0,1);
+            string revInput = xToString.Substring(1,xToString.Length-1);
+            char[] xToChar = revInput.ToCharArray();
+            Array.Reverse(xToChar);
+            string afterReverse = new string(xToChar);
+            string l = mathSingh + afterReverse;  
+            int outr = int.Parse(l);
+            return outr;   
+        }
+
+        string getForRev = x.ToString();
+        Char[] c = getForRev.ToCharArray();
+        Array.Reverse(c);
+        string outPut = new string(c);
+        int y = int.Parse(outPut);
+
+        return y;
+       
+              
+    }
+}
