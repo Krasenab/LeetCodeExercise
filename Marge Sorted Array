@@ -1,0 +1,15 @@
+public class Solution {
+    public void Merge(int[] nums1, int m, int[] nums2, int n) 
+    {
+        int startIndex = nums1.Length - nums2.Length; 
+       
+        for(int a = 0;a<nums2.Length;a++)
+        {
+             nums1[startIndex] = nums2[a];
+             startIndex++;  
+        }
+       
+        Array.Sort(nums1);
+        
+    }
+}
