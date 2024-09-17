@@ -1,0 +1,16 @@
+public class Solution {
+    public int MinimumOperations(int[] nums) 
+    {
+        int minimumNumbers =0;
+        for(int a =0;a<nums.Length;a++)
+        {
+            int currentNumForSubtract = nums[a] + 1;
+            int currentNumForAdd = nums[a]-1;
+            if(currentNumForSubtract % 3==0 ||currentNumForAdd % 3 ==0 || currentNumForSubtract==0)
+            {
+              minimumNumbers++;
+            }
+        }
+        return minimumNumbers++;  
+    }
+}
