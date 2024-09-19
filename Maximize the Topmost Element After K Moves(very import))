@@ -1,0 +1,31 @@
+public class Solution {
+    public int MaximumTop(int[] nums, int k) 
+    {
+//In case it is not possible to obtain a non-empty pile after k moves, return -1.
+        if(nums.Length == 1 && k % 2==1)
+        {
+            return -1;
+        }
+
+        int maxNum = int.MinValue;
+
+        for(int a =0; a<Math.Min(k-1,nums.Length);a++)
+        {
+            if(maxNum<nums[a])
+            {
+                maxNum = nums[a];
+            }
+        }
+//Return the maximum value of the topmost element of the pile possible after exactly k moves. 
+        if(k<nums.Length)
+        {
+            if(maxNum<nums[k])
+            {
+               maxNum = nums[k]; 
+            }
+        }
+        
+        return maxNum;
+      
+    }
+}
