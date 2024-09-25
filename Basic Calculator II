@@ -1,0 +1,75 @@
+public class Solution {
+    public int Calculate(string s) 
+    {
+        string s1 = s.Replace(" ","");
+        List<int> numbers = new List<int>();
+        List<char> operatorsCal = new List<char>();
+        string numbersCollector = ""; 
+
+        foreach(var ch in s1)
+        {
+            if(ch=='+' || ch=='-' || ch=='/' || ch=='*')
+            {
+                if(numbersCollector!="")
+                {
+                    numbers.Add(int.Parse(numbersCollector));
+                    numbersCollector = "";
+                }
+                operatorsCal.Add(ch);
+            }
+            else if(char.IsDigit(ch))
+            {
+                numbersCollector+=ch.ToString();
+            }
+        }
+        if(numbersCollector!="")
+        {
+          numbers.Add(int.Parse(numbersCollector));   
+        }
+
+        if(operatorsCal.Contains('/') ||operatorsCal.Contains('*'))
+        {
+            for(int m = 0; m <operatorsCal.Count;m++)
+            {
+                if(operatorsCal[m]=='/')
+                {
+                    numbers[m] = numbers[m] / numbers[m+1];
+                    numbers.RemoveAt(m+1);
+                    operatorsCal.RemoveAt(m);
+                    m--;
+                }
+                else if(operatorsCal[m]=='*')
+                {
+                    numbers[m] = numbers[m] * numbers[m+1];
+                    numbers.RemoveAt(m+1);
+                    operatorsCal.RemoveAt(m);
+                    m--;
+                }
+            }
+        }
+        if(operatorsCal.Contains('+') || operatorsCal.Contains('-'))
+        {
+            for(int a=0;a<operatorsCal.Count;a++)
+            {
+                if(operatorsCal[a]=='+')
+                {
+                    numbers[a] = numbers[a]+numbers[a+1];
+                    numbers.RemoveAt(a+1);
+                    operatorsCal.RemoveAt(a);
+                    a--;
+                }
+                else if(operatorsCal[a]=='-')
+                {
+                    numbers[a] = numbers[a] - numbers[a+1];
+                    numbers.RemoveAt(a+1);
+                    operatorsCal.RemoveAt(a);
+                    a--;
+                }
+            }
+        }
+
+        int result = numbers[0];
+        return result;
+
+    }
+}
