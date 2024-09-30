@@ -1,0 +1,13 @@
+// This is problem who have solution using XOR XOR sepc ^=nums[i] work only when we have TWO same number examp: 1,1,2,2,5,5,4 
+class Solution {
+    public int singleNumber(int[] nums) 
+    {
+        int specialNumber = 0;
+        for(int a =0;a<nums.length;a++)
+        {
+            specialNumber ^= nums[a];
+
+        }
+        return specialNumber;
+    }
+}
