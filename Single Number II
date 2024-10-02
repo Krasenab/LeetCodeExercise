@@ -1,0 +1,27 @@
+class Solution {
+    public int singleNumber(int[] nums) 
+    {
+        HashMap<Integer,Integer> mapNum = new HashMap<>();
+        int singlyNum =0;
+        for(int a=0;a<nums.length;a++)
+        {
+            if(!mapNum.containsKey(nums[a]))
+            {
+                mapNum.put(nums[a],1);
+            }
+            else{
+                mapNum.put(nums[a],mapNum.get(nums[a])+1);
+            }
+        }
+
+        for(Integer key:mapNum.keySet())
+        {
+            if(mapNum.get(key)==1)
+            {
+                singlyNum= key;
+            }
+        }  
+
+        return singlyNum;  
+    }
+}
