@@ -1,0 +1,31 @@
+class Solution {
+    public int duplicateNumbersXOR(int[] nums) 
+    {
+        HashMap<Integer, Integer> numMap = new HashMap<>();
+        int xOR = 0;
+     
+
+        for(int a=0;a<nums.length;a++)
+        {
+            if(!numMap.containsKey(nums[a]))
+            {
+                numMap.put(nums[a],1);
+                   
+            }
+            else{
+                numMap.put(nums[a],numMap.get(nums[a])+1);
+                
+            }
+        }
+        for(Integer key:numMap.keySet())
+        {
+            if(numMap.get(key)==2)
+            {
+                xOR ^= key;
+            }
+        }
+
+        return xOR;
+
+    }
+}
