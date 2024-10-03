@@ -1,0 +1,14 @@
+class Solution {
+    public boolean search(int[] nums, int target) 
+    {
+        for(int a =0;a<nums.length;a++)
+        {
+            if(nums[a]==target)
+            {
+                return true;
+            }
+        }
+
+        return false;    
+    }
+}
